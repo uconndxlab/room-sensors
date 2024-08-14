@@ -30,6 +30,7 @@ try {
                 <tr>
                     <th>Room</th>
                     <th>Motion</th>
+                    <th>Alive</th>
                     <th>Timestamp</th>
                 </tr>
             </thead>
@@ -38,6 +39,7 @@ try {
                 <tr>
                     <td><?php echo $ping['room']; ?></td>
                     <td><?php echo $ping['motion']; ?></td>
+                    <td><?php echo $ping['alive']; ?></td>
                     <td><?php echo $ping['created_at']; ?></td>
                 </tr>
                 <?php } ?>

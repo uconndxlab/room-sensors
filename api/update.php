@@ -6,15 +6,17 @@ try {
     $api_key = $_GET['api_key'] ?? null;
     $room = $_GET['room'] ?? null;
     $motion = $_GET['motion'] ?? $_GET['Motion'] ?? null;
+    $alive = $_GET['alive'] ?? $_GET['Alive'] ?? null;
     $humid = $_GET['humid'] ?? $_GET['Humid'] ?? null;
     $temp = $_GET['temp'] ?? $_GET['Temp'] ?? null;
 
     // Validate parameters
     if ($api_key && $room) {
         // Prepare and bind
-        $stmt = $conn->prepare("INSERT INTO ping (room, motion, humid, temp) VALUES (:room, :motion, :humid, :temp)");
+        $stmt = $conn->prepare("INSERT INTO ping (room, motion, alive, humid, temp) VALUES (:room, :motion, :alive, :humid, :temp)");
         $stmt->bindParam(':room', $room);
         $stmt->bindParam(':motion', $motion);
+        $stmt->bindParam(':alive', $alive);
         $stmt->bindParam(':humid', $humid);
         $stmt->bindParam(':temp', $temp);
 

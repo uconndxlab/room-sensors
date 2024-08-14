@@ -11,22 +11,25 @@
 <?php
 try {
     require_once('connection.php');
-    $stmt = $conn->prepare("SELECT * FROM ping");
+    $stmt = $conn->prepare("SELECT * FROM ping ORDER BY created_at DESC LIMIT 100");
     $stmt->execute();
     $pings = $stmt->fetchAll();
+
+    $total = $conn->query("SELECT COUNT(*) FROM ping")->fetchColumn();
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
     die();
 }
 
 ?>
+        <p>Total Pings: <?php echo $total; ?></p>
+        
+        <p>Last 100:</p>
         <table>
             <thead>
                 <tr>
                     <th>Room</th>
                     <th>Motion</th>
-                    <th>Humidity</th>
-                    <th>Temperature</th>
                     <th>Timestamp</th>
                 </tr>
             </thead>
@@ -35,8 +38,6 @@ try {
                 <tr>
                     <td><?php echo $ping['room']; ?></td>
                     <td><?php echo $ping['motion']; ?></td>
-                    <td><?php echo $ping['humid']; ?></td>
-                    <td><?php echo $ping['temp']; ?></td>
                     <td><?php echo $ping['created_at']; ?></td>
                 </tr>
                 <?php } ?>

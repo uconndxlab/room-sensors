@@ -36,11 +36,18 @@ try {
             </thead>
             <tbody>
                 <?php foreach ($pings as $ping) { ?>
+
+<?php
+$timezone = new DateTimeZone("America/New_York");
+$dt = new DateTime($ping['created_at'], new DateTimeZone("UTC"));
+$dt->setTimezone($timezone);
+?>
+
                 <tr>
                     <td><?php echo $ping['room']; ?></td>
                     <td><?php echo $ping['motion']; ?></td>
                     <td><?php echo $ping['alive']; ?></td>
-                    <td><?php echo $ping['created_at']; ?></td>
+                    <td><?php echo $dt->format("m/d/Y H:i:s") ?></td>
                 </tr>
                 <?php } ?>
             </tbody>

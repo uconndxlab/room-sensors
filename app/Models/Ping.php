@@ -10,5 +10,5 @@ class Ping extends Model
     use HasFactory;
 
     protected $table = 'ping';
-    protected $fillable = ['room', 'motion', 'alive', 'humid', 'temp'];
+    protected $fillable = ['room', 'motion', 'alive', 'humid', 'temp', 'error'];
 }

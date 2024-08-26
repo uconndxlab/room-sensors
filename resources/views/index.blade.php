@@ -16,6 +16,8 @@
                     <th>Motion</th>
                     <th>Alive</th>
                     <th>Temperature</th>
+                    <th>Humidity</th>
+                    <th>Error</th>
                     <th>Timestamp</th>
                 </tr>
             </thead>
@@ -26,6 +28,8 @@
                     <td>{{$ping->motion}}</td>
                     <td>{{$ping->alive}}</td>
                     <td>{{$ping->temp}}</td>
+                    <td>{{$ping->humid}}</td>
+                    <td>{{$ping->error}}</td>
                     <td>{{$ping->created_at->format('m/d/Y H:i:s')}}</td>
                 </tr>
                 @endforeach

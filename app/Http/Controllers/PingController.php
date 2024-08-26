@@ -30,6 +30,7 @@ class PingController extends Controller
         $ping->alive = $request->Alive ?? $request->alive;
         $ping->humid = $request->Humid ?? $request->humid;
         $ping->temp = $request->Temp ?? $request->temp;
+        $ping->error = $request->input('Error') ?? $request->input('error');
         $ping->save();
         return response()->json(['status' => 'success', 'message' => 'Ping added successfully']);
     }
